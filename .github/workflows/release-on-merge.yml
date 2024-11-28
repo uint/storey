@@ -25,11 +25,13 @@ jobs:
         id: extract_version
         run: |
           echo "VERSION=$(echo ${{ github.event.pull_request.title }} | perl -0777 -pe 's/^release: //')" >> $GITHUB_OUTPUT
-      - name: Create tag
-        env:
-          VERSION: ${{ steps.extract_version.outputs.VERSION }}
-        run: git tag -a $VERSION -m "Release $VERSION"
       - name: Push tag
         env:
           VERSION: ${{ steps.extract_version.outputs.VERSION }}
-        run: git push origin tag $VERSION
+        run: |
+          echo "Version is $VERSION"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git tag -a $VERSION -m "Release $VERSION"
+          git push origin tag $VERSION
+
