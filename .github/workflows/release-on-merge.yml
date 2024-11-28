@@ -20,7 +20,7 @@ jobs:
         with:
           tool: cargo-release
       - name: Release
-        run: cargo release
+        run: cargo release --no-tag --no-push
       - name: Extract version
         id: extract_version
         run: |
