@@ -28,8 +28,8 @@ jobs:
       - name: Create tag
         env:
           VERSION: ${{ steps.extract_version.outputs.VERSION }}
-        run: git tag -a ${{ VERSION }} -m "Release ${{ VERSION }}"
+        run: git tag -a $VERSION -m "Release $VERSION"
       - name: Push tag
         env:
           VERSION: ${{ steps.extract_version.outputs.VERSION }}
-        run: git push origin tag ${{ VERSION }}
+        run: git push origin tag $VERSION
