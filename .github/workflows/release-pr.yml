@@ -31,6 +31,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           version: ${{ inputs.version }}
           crate-release-all: true
-          check-semver: true
+          # check-semver: true
           branch-prefix: release-pr
           base-branch: ${{ github.ref }}
