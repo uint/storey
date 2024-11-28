@@ -1,3 +1,4 @@
+name: Release on merge
 on:
   pull_request:
     types:
